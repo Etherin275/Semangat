@@ -1,0 +1,287 @@
+<html class="scroll-smooth" lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Kata-Kata Penyemangat &amp; Tracking Belajar Raspberry Pi untuk Exel Opet
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Poppins', sans-serif;
+      background: #e0f2fe;
+    }
+    /* Animasi bergerak untuk gambar */
+    @keyframes floatUpDown {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+    .animate-float {
+      animation: floatUpDown 4s ease-in-out infinite;
+    }
+    /* Animasi spin lambat untuk icon */
+    @keyframes spinSlow {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    .animate-spin-slow {
+      animation: spinSlow 3s linear infinite;
+    }
+  </style>
+ </head>
+ <body class="min-h-screen flex flex-col items-center justify-center px-4 py-10">
+  <header class="mb-10 text-center max-w-xl">
+   <h1 class="text-4xl md:text-5xl font-extrabold text-blue-700 mb-4">
+    Kata-Kata Penyemangat untuk
+    <span class="text-yellow-500">
+     Exel Opet
+    </span>
+   </h1>
+   <p class="text-lg md:text-xl text-blue-900">
+    Jangan menyerah! Raspberry Pi memang menantang, tapi kamu pasti bisa!
+   </p>
+  </header>
+  <section class="relative w-full max-w-3xl bg-white rounded-3xl shadow-lg p-8 md:p-12 flex flex-col items-center mb-12">
+   <img alt="Animasi gambar papan Raspberry Pi dengan sirkuit bercahaya biru yang bergerak naik turun" class="animate-float w-48 h-48 mb-8" height="200" loading="lazy" src="https://storage.googleapis.com/a1aa/image/eafe2fba-8bc0-459f-c810-0618367d48ea.jpg" width="200"/>
+   <div class="text-center space-y-6" id="quote-container">
+    <p class="text-xl md:text-2xl font-semibold text-gray-800" id="quote-text">
+     "Setiap kesulitan adalah langkah menuju keberhasilan. Teruslah belajar, Exel Opet!"
+    </p>
+    <p class="text-sm md:text-base text-gray-500 italic">
+     - Motivasi dari Sahabatmu
+    </p>
+   </div>
+   <button aria-label="Dapatkan kata penyemangat baru" class="mt-10 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-colors duration-300 flex items-center space-x-3" id="new-quote-btn" type="button">
+    <i class="fas fa-sync-alt animate-spin-slow">
+    </i>
+    <span>
+     Kata Penyemangat Baru
+    </span>
+   </button>
+  </section>
+  <section class="w-full max-w-3xl bg-white rounded-3xl shadow-lg p-8 md:p-12">
+   <h2 class="text-3xl font-bold text-blue-700 mb-6 text-center">
+    Tracking Belajar Raspberry Pi
+   </h2>
+   <form aria-label="Form tambah tugas belajar Raspberry Pi" class="mb-6" id="task-form">
+    <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
+     <input aria-label="Judul tugas belajar" class="flex-grow border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" id="task-title" placeholder="Judul tugas belajar (misal: Setup OS Raspberry Pi)" required="" type="text"/>
+     <input aria-label="Tanggal target selesai" class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" id="task-date" required="" type="date"/>
+     <button aria-label="Tambah tugas belajar" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg px-6 py-3 transition-colors duration-300 flex items-center justify-center space-x-2" id="add-task-btn" type="submit">
+      <i class="fas fa-plus">
+      </i>
+      <span>
+       Tambah Tugas
+      </span>
+     </button>
+    </div>
+   </form>
+   <div class="overflow-x-auto">
+    <table aria-label="Daftar tugas belajar Raspberry Pi" class="w-full text-left border-collapse" id="task-table" role="table">
+     <thead>
+      <tr class="bg-blue-100">
+       <th class="py-3 px-4 border border-blue-200" scope="col">
+        Tugas
+       </th>
+       <th class="py-3 px-4 border border-blue-200" scope="col">
+        Target Selesai
+       </th>
+       <th class="py-3 px-4 border border-blue-200" scope="col">
+        Status
+       </th>
+       <th class="py-3 px-4 border border-blue-200" scope="col">
+        Aksi
+       </th>
+      </tr>
+     </thead>
+     <tbody id="task-list" role="rowgroup">
+      <!-- Daftar tugas akan muncul di sini -->
+     </tbody>
+    </table>
+   </div>
+   <p class="mt-4 text-sm text-gray-500 text-center">
+    Tugas yang sudah selesai akan ditandai dengan warna hijau.
+   </p>
+  </section>
+  <footer class="mt-16 text-center text-gray-600 text-sm max-w-xl">
+   <p>
+    Dibuat khusus untuk
+    <span class="font-semibold text-blue-700">
+     Exel Opet
+    </span>
+    yang sedang berjuang belajar Raspberry Pi. Semangat terus!
+   </p>
+  </footer>
+  <script>
+   // Array kata-kata penyemangat
+    const quotes = [
+      "Jangan takut gagal, Exel Opet. Dari kegagalan kamu akan belajar lebih banyak.",
+      "Setiap baris kode yang kamu tulis membawa kamu lebih dekat ke tujuanmu.",
+      "Raspberry Pi adalah tantangan, tapi kamu punya kemampuan untuk mengatasinya!",
+      "Pusing itu wajar, tapi jangan biarkan itu menghentikan semangatmu.",
+      "Ingat, Exel Opet, kesabaran dan ketekunan adalah kunci keberhasilan.",
+      "Setiap masalah pasti ada solusinya, terus cari dan jangan menyerah.",
+      "Belajar itu proses, bukan hasil instan. Nikmati setiap langkahnya.",
+      "Kamu bukan sendiri, banyak yang juga pernah pusing belajar hal baru.",
+      "Jangan lupa istirahat sejenak, pikiran yang segar akan lebih mudah memahami.",
+      "Exel Opet, kamu hebat karena berani mencoba hal baru seperti Raspberry Pi.",
+      "Semangatmu adalah inspirasi bagi teman-teman di sekitarmu.",
+      "Teruslah mencoba, karena keberhasilan ada di ujung usaha yang tak kenal lelah.",
+      "Setiap kesulitan adalah kesempatan untuk menjadi lebih kuat dan pintar.",
+      "Jangan ragu bertanya dan mencari bantuan, itu tanda kamu ingin maju.",
+      "Exel Opet, kamu pasti bisa menguasai Raspberry Pi dengan kerja keras dan doa."
+    ];
+
+    const quoteText = document.getElementById('quote-text');
+    const newQuoteBtn = document.getElementById('new-quote-btn');
+
+    function getRandomQuote() {
+      const index = Math.floor(Math.random() * quotes.length);
+      return quotes[index];
+    }
+
+    newQuoteBtn.addEventListener('click', () => {
+      // Animasi fade out
+      quoteText.classList.add('opacity-0', 'transition-opacity', 'duration-500');
+      setTimeout(() => {
+        quoteText.textContent = getRandomQuote();
+        // Fade in
+        quoteText.classList.remove('opacity-0');
+      }, 500);
+    });
+
+    // Tracking belajar Raspberry Pi
+    const taskForm = document.getElementById('task-form');
+    const taskTitleInput = document.getElementById('task-title');
+    const taskDateInput = document.getElementById('task-date');
+    const taskList = document.getElementById('task-list');
+
+    // Load tasks from localStorage or initialize empty array
+    let tasks = JSON.parse(localStorage.getItem('raspberryPiTasks')) || [];
+
+    // Function to save tasks to localStorage
+    function saveTasks() {
+      localStorage.setItem('raspberryPiTasks', JSON.stringify(tasks));
+    }
+
+    // Function to render tasks in the table
+    function renderTasks() {
+      taskList.innerHTML = '';
+      if(tasks.length === 0){
+        const tr = document.createElement('tr');
+        const td = document.createElement('td');
+        td.setAttribute('colspan', '4');
+        td.className = 'text-center py-4 text-gray-500 italic';
+        td.textContent = 'Belum ada tugas belajar. Tambahkan tugas baru di atas.';
+        tr.appendChild(td);
+        taskList.appendChild(tr);
+        return;
+      }
+      tasks.forEach((task, index) => {
+        const tr = document.createElement('tr');
+        tr.className = task.completed ? 'bg-green-100' : '';
+
+        // Tugas
+        const tdTitle = document.createElement('td');
+        tdTitle.className = 'border border-blue-200 px-4 py-3 break-words max-w-xs';
+        tdTitle.textContent = task.title;
+        tr.appendChild(tdTitle);
+
+        // Target Selesai
+        const tdDate = document.createElement('td');
+        tdDate.className = 'border border-blue-200 px-4 py-3 whitespace-nowrap';
+        const dateObj = new Date(task.date);
+        tdDate.textContent = dateObj.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
+        tr.appendChild(tdDate);
+
+        // Status
+        const tdStatus = document.createElement('td');
+        tdStatus.className = 'border border-blue-200 px-4 py-3 text-center';
+        if(task.completed){
+          tdStatus.innerHTML = '<span class="text-green-700 font-semibold"><i class="fas fa-check-circle mr-1"></i>Selesai</span>';
+        } else {
+          tdStatus.innerHTML = '<span class="text-red-600 font-semibold"><i class="fas fa-times-circle mr-1"></i>Belum</span>';
+        }
+        tr.appendChild(tdStatus);
+
+        // Aksi
+        const tdActions = document.createElement('td');
+        tdActions.className = 'border border-blue-200 px-4 py-3 text-center space-x-2';
+
+        // Tombol toggle status
+        const toggleBtn = document.createElement('button');
+        toggleBtn.setAttribute('aria-label', task.completed ? 'Tandai belum selesai' : 'Tandai selesai');
+        toggleBtn.className = 'text-sm bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md transition-colors duration-300';
+        toggleBtn.textContent = task.completed ? 'Batalkan' : 'Selesai';
+        toggleBtn.type = 'button';
+        toggleBtn.addEventListener('click', () => {
+          tasks[index].completed = !tasks[index].completed;
+          saveTasks();
+          renderTasks();
+        });
+        tdActions.appendChild(toggleBtn);
+
+        // Tombol hapus
+        const deleteBtn = document.createElement('button');
+        deleteBtn.setAttribute('aria-label', 'Hapus tugas');
+        deleteBtn.className = 'text-sm bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md transition-colors duration-300';
+        deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+        deleteBtn.type = 'button';
+        deleteBtn.addEventListener('click', () => {
+          if(confirm(`Yakin ingin menghapus tugas "${task.title}"?`)) {
+            tasks.splice(index, 1);
+            saveTasks();
+            renderTasks();
+          }
+        });
+        tdActions.appendChild(deleteBtn);
+
+        tr.appendChild(tdActions);
+
+        taskList.appendChild(tr);
+      });
+    }
+
+    // Event submit form tambah tugas
+    taskForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const title = taskTitleInput.value.trim();
+      const date = taskDateInput.value;
+      if(!title || !date) return;
+
+      // Cek apakah tanggal valid dan tidak di masa lalu
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      const selectedDate = new Date(date);
+      if(selectedDate < today){
+        alert('Tanggal target selesai tidak boleh di masa lalu.');
+        return;
+      }
+
+      tasks.push({
+        title,
+        date,
+        completed: false
+      });
+      saveTasks();
+      renderTasks();
+      taskForm.reset();
+      taskTitleInput.focus();
+    });
+
+    // Render tasks saat halaman dimuat
+    renderTasks();
+  </script>
+ </body>
+</html>
